@@ -1,0 +1,24 @@
+syntax="proto3";
+option java_package = "com.bnpinnovation.proto";
+
+import "google/protobuf/empty.proto";
+
+// https://coding-start.tistory.com/352
+
+message SCVRequest {
+    string username  = 1;
+    string password = 2;
+    string email = 3;
+}
+
+message SCVResponse {
+    string username  = 1;
+    string email = 2;
+}
+
+service SCVService {
+    rpc NewSCV (SCVRequest) returns (google.protobuf.Empty) {}
+    rpc GetSCV (google.protobuf.Empty) returns (SCVResponse) {}
+}
+
+option optimize_for = LITE_RUNTIME;
